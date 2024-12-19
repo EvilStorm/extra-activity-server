@@ -12,7 +12,6 @@ export class UserService {
   ) {}
 
   create(createUserDto: CreateUserDto) {
-    console.log(createUserDto);
     const user = this.userRepository.create(createUserDto);
 
     return this.userRepository.save(user);
@@ -23,7 +22,8 @@ export class UserService {
   }
 
   findOne(id: number): Promise<User | null> {
-    return this.userRepository.findOneBy({ id });
+    const user = this.userRepository.findOneBy({ id });
+    return user;
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
